@@ -35,37 +35,34 @@ def clear_popup(driver, wait):
     except sel_exc.NoSuchElementException:
         print("No Popup found, continuing. . . ")
 
-def intro_page(driver, wait):
-    clear_popup(driver, wait)    ## Close popup ##
+def select_location(driver, location, is_return):
+    flight_type = "Departure"
+    if is_return == True:
+        flight_type = "Destination"
 
-    ## Select Departure Location ##
-    print("Searching for Departure input")
-    dep_location = 'Bellingham, WA / Vancouver, BC (BLI)'
+
+    ## Select Location ##
+    print(f"Searching for {flight_type} input")
 
     # find departure (from) box
-    dep_box = driver.find_element_by_name('search_form[departure_city]')
-    print(f"Departure Box found! Selecting {dep_location}")
+    location_box = driver.find_element_by_name(f'search_form[{str.lower(flight_type)}_city]')
+    print(f"{flight_type} Box found! Selecting {location}")
 
     # interact with box
-    dep_box.click()
-    dep_box.send_keys(dep_location)
+    location_box.click()
+    location_box.send_keys(location)
     time.sleep(1)
-    dep_box.send_keys(Keys.ENTER)
+    location_box.send_keys(Keys.ENTER)
+
+def intro_page(driver, wait, departure_location, destination_location):
+    ## Close popup ##
+    clear_popup(driver, wait)
+
+    ## Select Departure Location ##
+    select_location(driver, departure_location, False)
 
     ## Select Destination Location ##
-
-    print("Searching for Destination input")
-    des_location = "Las Vegas, NV (LAS)"
-
-    # find destination (to) box
-    des_box = driver.find_element_by_name("search_form[destination_city]")
-    print(f"Destination Box found! Selecting {des_location}")
-
-    # interact with box
-    des_box.click()
-    des_box.send_keys(des_location)
-    time.sleep(1)
-    des_box.send_keys(Keys.ENTER)
+    select_location(driver, destination_location, True)
 
     ## Select Departure Date ##
 

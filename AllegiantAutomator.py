@@ -27,7 +27,10 @@ wait = WebDriverWait(driver, 10)
 try:
 
 ### PAGE 1 ###
-    intro_page(driver, wait)
+    departure_location = 'Bellingham, WA / Vancouver, BC (BLI)'
+    destination_location = "Las Vegas, NV (LAS)"
+
+    intro_page(driver, wait, departure_location, destination_location)
 ### PAGE 2 ###
 
     ## Get price of departure flight
