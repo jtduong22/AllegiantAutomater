@@ -187,7 +187,34 @@ try:
 
 
 ### Page 3 ###
+    bundle_price = '0.00'
 
+    print(f"added bundle price is ${bundle_price}")
+
+    # Wait until button is enabled
+    wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
+    print("moving onto next page")
+    driver.find_element_by_class_name("continue").click()
+
+### Page 4 ###
+    hotel_price = '0.00'
+
+    print(f"added hotel price is ${hotel_price}")
+
+    # Wait until button is enabled
+    wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
+    print("moving onto next page")
+    driver.find_element_by_class_name("continue").click()
+
+### Page 5 (Vehicle) ###
+    car_price = '0.00'
+
+    print(f"added car price is ${car_price}")
+
+    # Wait until button is enabled
+    wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
+    print("moving onto next page")
+    driver.find_element_by_class_name("continue").click()
 
 except Exception as e:
     print(f"Type {type(e)} Exception has occurred: {e}")
