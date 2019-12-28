@@ -81,6 +81,36 @@ try:
     time.sleep(1)
     des_box.send_keys(Keys.ENTER)
 
+    ## Select Departure Date ##
+
+    print("Searching for Departure Date Button")
+    date_button = driver.find_element_by_class_name("datepicker-toggle")
+    time.sleep(1)
+    print("Button found! Clicking")
+    date_button.click()
+
+    # next page
+    print("Moving to next page")
+    time.sleep(.5)
+    driver.find_element_by_partial_link_text("Next month").click()
+
+    # select date
+    print("Selecting January 26th")
+    driver.find_element_by_id("ui-datepicker-0-0-26").click()
+
+    ## Select Return Date ##
+
+    print("Searching for Return Date Button")
+    date_button = driver.find_element_by_xpath("/html/body/div[5]/div/div/div[1]/div[1]/div/div[2]/div[1]/div/div/div[1]/form/div/div[1]/div[2]/div[2]/div/div/div/button")
+    time.sleep(1)
+    print("Button found! Clicking")
+    date_button.click()
+
+    # select date
+    print("Selecting January 27th")
+    driver.find_element_by_id("ui-datepicker-0-0-27").click()
+
+
 except Exception as e:
     print(f"Type {type(e)} Exception has occurred: {e}")
     driver.quit()
