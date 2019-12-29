@@ -38,11 +38,13 @@ try:
     destination_location = "Las Vegas, NV (LAS)"
     departure_date = [1,26,2020]
     return_date = [1,27,2020]
+    num_of_adults = 3
 
-    parse_intro_page(driver, wait, departure_location, destination_location, departure_date[0], departure_date[1], departure_date[2], return_date[0], return_date[1], return_date[2])
+    parse_intro_page(driver, wait, departure_location, destination_location, departure_date[0], departure_date[1],
+                     departure_date[2], return_date[0], return_date[1], return_date[2], num_of_adults)
 
 ### PAGE 2 (Get Flight prices) ###
-    all_costs += parse_flight_page(driver, wait)
+    all_costs += parse_flight_page(driver, wait) * num_of_adults
 
 ### Page 3 (Bundle) ###
     all_costs += parse_bundle_page(driver, wait)

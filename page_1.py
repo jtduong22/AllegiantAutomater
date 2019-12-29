@@ -98,6 +98,17 @@ def select_date(driver, input_box, month, day, year):
     print(f"Selecting {month_to_word[month]} {day}")
     driver.find_element_by_id(f"ui-datepicker-0-{month-1}-{day}").click()
 
+def select_number_of_people(driver, num, is_adult):
+    # get dropdown
+    dropdown = driver.find_element_by_id("adults-children-container")
+    if is_adult == True:
+        dropdown = dropdown.find_element_by_xpath(".//div[1]/div/select")
+    else:
+        dropdown = dropdown.find_element_by_xpath(".//div[2]/div/select")
+
+    # set amount of adults
+    dropdown.send_keys(num)
+
 def parse_intro_page(driver, wait, departure_location, destination_location, dep_month = 1, dep_day = 26, dep_year = 2020, ret_month = 1, ret_day = 27, ret_year = 2020, num_of_adults = 1, num_of_children = 0):
     ## Close popup ##
     clear_popup(driver, wait)
@@ -115,6 +126,9 @@ def parse_intro_page(driver, wait, departure_location, destination_location, dep
     ## Select Return Date ##
     input_box = driver.find_element_by_name("search_form[return_date]").find_element_by_xpath('..')
     select_date(driver, input_box, ret_month, ret_day, ret_year)
+
+    ## select number of adults
+    select_number_of_people(driver, num_of_adults, True)
 
     ## Submit
     print("Moving on to the next page\n")
