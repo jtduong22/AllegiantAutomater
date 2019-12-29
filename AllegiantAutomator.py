@@ -11,6 +11,9 @@ from selenium.webdriver.common.by import By
 
 from page_1 import *
 from page_2 import *
+from page_3 import *
+from page_4 import *
+from page_5 import *
 
 url = 'https://www.allegiantair.com/'
 
@@ -37,36 +40,15 @@ try:
 ### PAGE 2 ###
     parse_flight_page(driver, wait)
 
-
 ### Page 3 ###
-    bundle_price = '0.00'
-
-    print(f"added bundle price is ${bundle_price}")
-
-    # Wait until button is enabled
-    wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
-    print("Moving onto the next page\n")
-    driver.find_element_by_class_name("continue").click()
+    parse_bundle_page(driver, wait)
 
 ### Page 4 ###
-    hotel_price = '0.00'
-
-    print(f"added hotel price is ${hotel_price}")
-
-    # Wait until button is enabled
-    wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
-    print("Moving onto the next page\n")
-    driver.find_element_by_class_name("continue").click()
+    parse_hotel_page(driver, wait)
 
 ### Page 5 (Vehicle) ###
-    car_price = '0.00'
+    parse_car_page(driver,wait)
 
-    print(f"added car price is ${car_price}")
-
-    # Wait until button is enabled
-    wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
-    print("Moving onto the next page\n")
-    driver.find_element_by_class_name("continue").click()
 
 except Exception as e:
     print(f"Type {type(e)} Exception has occurred: {e}")
