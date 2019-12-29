@@ -50,7 +50,8 @@ try:
     hotel_cost = parse_hotel_page(driver, wait, is_booked_hotel)
 
 ### Page 5 (Vehicle) ###
-    car_cost = parse_car_page(driver, wait)
+    is_car_booked = True
+    car_cost = parse_car_page(driver, wait, is_car_booked)
 
 ### Page 6 ###
     if is_booked_hotel:
