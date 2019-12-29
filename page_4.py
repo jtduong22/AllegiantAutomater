@@ -1,10 +1,10 @@
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 
-def parse_hotel_page(driver, wait, is_booked_hotel):
+def parse_hotel_page(driver, wait, is_hotel_booked):
     hotel_price = '0.00'
 
-    if is_booked_hotel:
+    if is_hotel_booked:
         print("Waiting for page to load. . .")
         wait.until(ec.presence_of_element_located((By.ID, "hotelchooser")))
 
@@ -26,7 +26,7 @@ def parse_hotel_page(driver, wait, is_booked_hotel):
     print("Moving onto the next page\n")
 
     # Wait until button is enabled
-    if not is_booked_hotel:
+    if not is_hotel_booked:
         wait.until(ec.invisibility_of_element_located((By.CLASS_NAME, "white-overlay")))
         wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
         driver.find_element_by_class_name("continue").click()
