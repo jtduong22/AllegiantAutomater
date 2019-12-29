@@ -33,7 +33,7 @@ try:
     departure_date = [1,26,2020]
     return_date = [1,27,2020]
 
-    intro_page(driver, wait, departure_location, destination_location, departure_date[0], departure_date[1],departure_date[2], return_date[0],return_date[1], return_date[2])
+    parse_intro_page(driver, wait, departure_location, destination_location, departure_date[0], departure_date[1], departure_date[2], return_date[0], return_date[1], return_date[2])
 ### PAGE 2 ###
     parse_flight_page(driver, wait)
 
@@ -45,7 +45,7 @@ try:
 
     # Wait until button is enabled
     wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
-    print("moving onto next page")
+    print("Moving onto the next page\n")
     driver.find_element_by_class_name("continue").click()
 
 ### Page 4 ###
@@ -55,7 +55,7 @@ try:
 
     # Wait until button is enabled
     wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
-    print("moving onto next page")
+    print("Moving onto the next page\n")
     driver.find_element_by_class_name("continue").click()
 
 ### Page 5 (Vehicle) ###
@@ -65,7 +65,7 @@ try:
 
     # Wait until button is enabled
     wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
-    print("moving onto next page")
+    print("Moving onto the next page\n")
     driver.find_element_by_class_name("continue").click()
 
 except Exception as e:

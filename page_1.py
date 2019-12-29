@@ -73,7 +73,7 @@ def select_date(driver, input_box, month, day, year):
 
     # while the year and month don't match, keep searching
     while not (word_to_month[current_month] == month and year == current_year):
-        print(f"Current date is {current_month} {current_year} vs selected {month} {year}")
+        print(f"Current date is {current_month} {current_year} vs selected {month_to_word[month]} {year}")
 
         # year is too small or month is too small, increment page
         if current_year < year or (current_year == year and word_to_month[current_month] < month):
@@ -98,7 +98,7 @@ def select_date(driver, input_box, month, day, year):
     print(f"Selecting {month_to_word[month]} {day}")
     driver.find_element_by_id(f"ui-datepicker-0-{month-1}-{day}").click()
 
-def intro_page(driver, wait, departure_location, destination_location, dep_month = 1, dep_day = 26, dep_year = 2020, ret_month = 1, ret_day = 27, ret_year = 2020):
+def parse_intro_page(driver, wait, departure_location, destination_location, dep_month = 1, dep_day = 26, dep_year = 2020, ret_month = 1, ret_day = 27, ret_year = 2020):
     ## Close popup ##
     clear_popup(driver, wait)
 
@@ -117,5 +117,5 @@ def intro_page(driver, wait, departure_location, destination_location, dep_month
     select_date(driver, input_box, ret_month, ret_day, ret_year)
 
     ## Submit
-    print("Moving on to next page\n")
+    print("Moving on to the next page\n")
     driver.find_element_by_id("submit-search").click()
