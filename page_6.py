@@ -43,6 +43,6 @@ def compare_total_price(driver, wait, all_costs):
 
     print(f"\nCalculated Price was: {cents_to_dollars(sum)}")
     print(f"Listed Price was:     {cents_to_dollars(listed_price)}")
-    print(f"The two prices are {('not the same', 'identical')[listed_price == sum]}\n")
+    print(f"The two prices are {('NOT the same', 'identical')[listed_price == sum]}\n")
 
     return listed_price == sum

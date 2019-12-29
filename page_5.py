@@ -10,6 +10,7 @@ def parse_car_page(driver, wait):
     # wait.until(ec.presence_of_element_located((By.ID, "vehicles")))
     wait.until(ec.invisibility_of_element_located((By.CLASS_NAME, "white-overlay")))
     wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
+
     print("Moving onto the next page\n")
     driver.find_element_by_class_name("continue").click()
 

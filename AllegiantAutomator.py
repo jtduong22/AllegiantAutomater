@@ -33,7 +33,7 @@ try:
     destination_location = "Las Vegas, NV (LAS)"
     departure_date = [1,26,2020]
     return_date = [1,27,2020]
-    num_of_adults = 3
+    num_of_adults = 5
 
     parse_intro_page(driver, wait, departure_location, destination_location, departure_date[0], departure_date[1],
                      departure_date[2], return_date[0], return_date[1], return_date[2], num_of_adults)
