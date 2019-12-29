@@ -14,6 +14,7 @@ from page_2 import *
 from page_3 import *
 from page_4 import *
 from page_5 import *
+from page_6 import *
 
 url = 'https://www.allegiantair.com/'
 
@@ -29,6 +30,8 @@ print('Load successful')
 wait = WebDriverWait(driver, 10)
 
 try:
+    # keep track of prices
+    all_costs = []
 
 ### PAGE 1 ###
     departure_location = 'Bellingham, WA / Vancouver, BC (BLI)'
@@ -37,18 +40,21 @@ try:
     return_date = [1,27,2020]
 
     parse_intro_page(driver, wait, departure_location, destination_location, departure_date[0], departure_date[1], departure_date[2], return_date[0], return_date[1], return_date[2])
-### PAGE 2 ###
-    parse_flight_page(driver, wait)
 
-### Page 3 ###
-    parse_bundle_page(driver, wait)
+### PAGE 2 (Get Flight prices) ###
+    all_costs += parse_flight_page(driver, wait)
 
-### Page 4 ###
-    parse_hotel_page(driver, wait)
+### Page 3 (Bundle) ###
+    all_costs += parse_bundle_page(driver, wait)
+
+### Page 4 (Hotel) ###
+    all_costs += parse_hotel_page(driver, wait)
 
 ### Page 5 (Vehicle) ###
-    parse_car_page(driver,wait)
+    all_costs += parse_car_page(driver, wait)
 
+### Page 6 ###
+    result = compare_total_price(driver, wait, all_costs)
 
 except Exception as e:
     print(f"Type {type(e)} Exception has occurred: {e}")

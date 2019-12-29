@@ -51,3 +51,5 @@ def parse_flight_page(driver, wait):
     print("Moving on to the next page\n")
     button = driver.find_element_by_class_name("button-wrapper").find_element_by_tag_name("button")
     button.click()
+
+    return [dep_price, ret_price]
