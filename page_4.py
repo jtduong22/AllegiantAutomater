@@ -1,7 +1,7 @@
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 
-def parse_hotel_page(driver, wait):
+def parse_hotel_page(driver, wait, is_booked_hotel):
     hotel_price = '0.00'
 
 
