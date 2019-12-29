@@ -42,11 +42,11 @@ try:
     flight_cost = parse_flight_page(driver, wait)
 
 ### Page 3 (Bundle) ###
-    bundle_type = 1
+    bundle_type = 2
     bundle_cost = parse_bundle_page(driver, wait, bundle_type)
 
 ### Page 4 (Hotel) ###
-    is_booked_hotel = False
+    is_booked_hotel = True
     hotel_cost = parse_hotel_page(driver, wait, is_booked_hotel)
 
 ### Page 5 (Vehicle) ###
@@ -57,7 +57,7 @@ try:
         all_costs = hotel_cost
     else:
         all_costs = flight_cost
-    all_costs = (all_costs + bundle_cost) * 3 + car_cost
+    all_costs = (all_costs + bundle_cost) * num_of_adults + car_cost
 
     result = compare_total_price(driver, wait, all_costs)
 
