@@ -27,8 +27,8 @@ def parse_hotel_page(driver, wait, is_hotel_booked):
 
     # Wait until button is enabled
     if not is_hotel_booked:
-        wait.until(ec.invisibility_of_element_located((By.CLASS_NAME, "white-overlay")))
-        wait.until(ec.element_to_be_clickable((By.CLASS_NAME, "continue")))
-        driver.find_element_by_class_name("continue").click()
+        # wait.until(ec.invisibility_of_element_located((By.CLASS_NAME, "white-overlay")))
+        wait.until(ec.element_to_be_clickable((By.XPATH, "//*[@id='hotelchooser']/div[5]/div/button")))
+        driver.find_element_by_xpath("//*[@id='hotelchooser']/div[5]/div/button").click()
 
     return [hotel_price]

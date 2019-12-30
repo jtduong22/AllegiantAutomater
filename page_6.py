@@ -31,11 +31,12 @@ def compare_total_price(driver, wait, all_costs):
 
     ## compare calculated sum to listed total price on website
 
-    print("Retrieving listed price on website . . .")
 
+    print("Waiting for summary to load. . .")
     # wait for summary to load
     wait.until(ec.presence_of_element_located((By.ID, "summary-wrapper")))
 
+    print("Retrieving listed price on website . . .")
     # get listed price
     summary_row = driver.find_element_by_id("pricing")
     summary_row = summary_row.find_element_by_xpath('.//div/table/tbody[position()=last()-1]/tr/td')
@@ -45,4 +46,4 @@ def compare_total_price(driver, wait, all_costs):
     print(f"Listed Price was:     {cents_to_dollars(listed_price)}")
     print(f"The two prices are {('NOT the same', 'identical')[listed_price == sum]}\n")
 
-    return listed_price == sum
+    return listed_price == sum, cents_to_dollars(sum), cents_to_dollars(listed_price), ('NOT the same', 'identical')[listed_price == sum]

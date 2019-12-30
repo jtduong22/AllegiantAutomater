@@ -15,17 +15,10 @@ from page_6 import *
 def allegiant_automator(options: option):
     url = 'https://www.allegiantair.com/'
 
-    ## Load Webpage ##
-
-    print(f"Attempting to load {url}")
-    driver = webdriver.Firefox()
-    driver.set_page_load_timeout(10)
-    driver.implicitly_wait(10)
-    driver.get(url)
-    print('Load successful')
-
-    wait = WebDriverWait(driver, 10)
     result = False
+    calculated_price = "Error"
+    listed_price = "Error"
+    error_message = ""
 
 ### options ###
     departure_location = options.departure_location
@@ -38,6 +31,17 @@ def allegiant_automator(options: option):
     is_car_booked = options.is_car_booked
 
     try:
+        ## Load Webpage ##
+
+        print(f"Attempting to load {url}")
+        driver = webdriver.Firefox()
+        driver.set_page_load_timeout(10)
+        driver.implicitly_wait(10)
+        driver.get(url)
+        print('Load successful')
+
+        wait = WebDriverWait(driver, 10)
+
         # keep track of prices
         all_costs = []
 
@@ -64,12 +68,13 @@ def allegiant_automator(options: option):
             all_costs = flight_cost
         all_costs = (all_costs + bundle_cost) * num_of_adults + car_cost
 
-        result = compare_total_price(driver, wait, all_costs)
+        result, calculated_price, listed_price, error_message = compare_total_price(driver, wait, all_costs)
 
     except Exception as e:
         print(f"Type {type(e)} Exception has occurred: {e}")
+        error_message = e
 
     # input("Press any button to continue . . .")
     driver.quit()
-    return  result
+    return [result, calculated_price, listed_price, error_message]
 

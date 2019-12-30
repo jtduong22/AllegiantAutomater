@@ -15,6 +15,7 @@ class option:
         config = configparser.ConfigParser()
         config.read(filename)
 
+        # import settings from file
         self.departure_location = config['Intro']['departure_location']
         self.destination_location = config['Intro']['destination_location']
         self.departure_date = [int(x) for x in config['Intro']['departure_date'].split(',')]
