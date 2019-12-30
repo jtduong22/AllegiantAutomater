@@ -15,11 +15,13 @@ def parse_car_page(driver, wait, is_car_booked):
         car_chooser = driver.find_element_by_id("vendors")
         car_listing = car_chooser.find_element_by_xpath(".//div[2]/table/tbody/tr[1]/td[1]/span/a")
 
+        print("Car selected. Getting price")
         # get car price
         car_price = ''.join(x for x in car_listing.text if str.isnumeric(x) or x == '.')
         car_listing.click()
 
-        wait.until(ec.staleness_of((By.ID, "pricing")))
+        print("Waiting until price updates. . . ")
+        wait.until(ec.staleness_of(car_chooser))
 
     print(f"added car price is ${car_price}")
 
