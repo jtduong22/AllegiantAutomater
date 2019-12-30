@@ -22,7 +22,7 @@ for num_of_adult in range(1,10,4):
         # checks for not booking and booking a hotel
         for hotel_booked in range(2):
             # checks for not booking and booking a car
-            for car_booked in range(0,2):
+            for car_booked in range(2):
                 print(f"Test {counter} / {max_test}")
 
                 # adjust respective settings

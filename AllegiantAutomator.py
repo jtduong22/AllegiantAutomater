@@ -12,7 +12,7 @@ from page_4 import *
 from page_5 import *
 from page_6 import *
 
-def allegiant_automator(options: option):
+def allegiant_automator(options: option, pause=False):
     url = 'https://www.allegiantair.com/'
 
     result = False
@@ -74,7 +74,7 @@ def allegiant_automator(options: option):
         print(f"Type {type(e)} Exception has occurred: {e}")
         error_message = e
 
-    # input("Press any button to continue . . .")
-    driver.quit()
+    if not pause:
+        driver.quit()
     return [result, calculated_price, listed_price, error_message]
 

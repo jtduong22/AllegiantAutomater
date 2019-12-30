@@ -34,7 +34,7 @@ def compare_total_price(driver, wait, all_costs):
 
     print("Waiting for summary to load. . .")
     # wait for summary to load
-    wait.until(ec.presence_of_element_located((By.ID, "summary-wrapper")))
+    wait.until(ec.visibility_of_element_located((By.ID, "travellers-wrapper")))
 
     print("Retrieving listed price on website . . .")
     # get listed price

@@ -8,7 +8,7 @@ options.import_config_file(options_file)
 
 # Test and Store results
 current_settings = [options.departure_location, options.destination_location, options.departure_date, options.return_date, options.num_of_adults, options.bundle_type, options.is_hotel_booked, options.is_car_booked]
-test = allegiant_automator(options)
+test = allegiant_automator(options, True)
 
 # create file
 result_file = open('results.csv', 'w+')
